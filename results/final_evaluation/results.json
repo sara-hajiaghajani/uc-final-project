@@ -1,0 +1,529 @@
+{
+  "config": {
+    "seq_len": 672,
+    "pred_len": 24,
+    "patch_len": 32,
+    "stride": 16,
+    "num_runs": 5,
+    "seeds": [
+      42,
+      123,
+      456,
+      789,
+      101112
+    ],
+    "learning_rate": 1e-05
+  },
+  "individual_runs": {
+    "sequence": {
+      "run_1": {
+        "seed": 42,
+        "mse": 25.67115020751953,
+        "mae": 2.975118398666382,
+        "per_station": {
+          "maastricht": {
+            "mse": 25.72039031982422,
+            "mae": 2.9784772396087646,
+            "n_samples": 12804
+          },
+          "schiphol": {
+            "mse": 25.62190818786621,
+            "mae": 2.9717588424682617,
+            "n_samples": 12803
+          }
+        },
+        "total_params": 8853088,
+        "head_params": 0,
+        "epochs_trained": 19,
+        "early_stopped": true
+      },
+      "run_2": {
+        "seed": 123,
+        "mse": 25.726865768432617,
+        "mae": 2.9916882514953613,
+        "per_station": {
+          "maastricht": {
+            "mse": 25.761301040649414,
+            "mae": 2.992962121963501,
+            "n_samples": 12804
+          },
+          "schiphol": {
+            "mse": 25.692426681518555,
+            "mae": 2.9904143810272217,
+            "n_samples": 12803
+          }
+        },
+        "total_params": 8853088,
+        "head_params": 0,
+        "epochs_trained": 19,
+        "early_stopped": true
+      },
+      "run_3": {
+        "seed": 456,
+        "mse": 25.286985397338867,
+        "mae": 2.961364507675171,
+        "per_station": {
+          "maastricht": {
+            "mse": 25.332284927368164,
+            "mae": 2.964355945587158,
+            "n_samples": 12804
+          },
+          "schiphol": {
+            "mse": 25.241682052612305,
+            "mae": 2.9583733081817627,
+            "n_samples": 12803
+          }
+        },
+        "total_params": 8853088,
+        "head_params": 0,
+        "epochs_trained": 19,
+        "early_stopped": true
+      },
+      "run_4": {
+        "seed": 789,
+        "mse": 25.53396224975586,
+        "mae": 2.969062566757202,
+        "per_station": {
+          "maastricht": {
+            "mse": 25.538558959960938,
+            "mae": 2.970883369445801,
+            "n_samples": 12804
+          },
+          "schiphol": {
+            "mse": 25.529361724853516,
+            "mae": 2.9672417640686035,
+            "n_samples": 12803
+          }
+        },
+        "total_params": 8853088,
+        "head_params": 0,
+        "epochs_trained": 19,
+        "early_stopped": true
+      },
+      "run_5": {
+        "seed": 101112,
+        "mse": 25.800525665283203,
+        "mae": 3.0052008628845215,
+        "per_station": {
+          "maastricht": {
+            "mse": 25.90681266784668,
+            "mae": 3.011599540710449,
+            "n_samples": 12804
+          },
+          "schiphol": {
+            "mse": 25.694229125976562,
+            "mae": 2.9988014698028564,
+            "n_samples": 12803
+          }
+        },
+        "total_params": 8853088,
+        "head_params": 0,
+        "epochs_trained": 19,
+        "early_stopped": true
+      }
+    },
+    "patchtst_patchwise": {
+      "run_1": {
+        "seed": 42,
+        "mse": 23.906906127929688,
+        "mae": 2.823796510696411,
+        "per_station": {
+          "maastricht": {
+            "mse": 24.017972946166992,
+            "mae": 2.826918840408325,
+            "n_samples": 12804
+          },
+          "schiphol": {
+            "mse": 23.79583168029785,
+            "mae": 2.820674180984497,
+            "n_samples": 12803
+          }
+        },
+        "total_params": 608424,
+        "head_params": 4128,
+        "epochs_trained": 50,
+        "early_stopped": false
+      },
+      "run_2": {
+        "seed": 123,
+        "mse": 23.899959564208984,
+        "mae": 2.8240389823913574,
+        "per_station": {
+          "maastricht": {
+            "mse": 23.976884841918945,
+            "mae": 2.8264644145965576,
+            "n_samples": 12804
+          },
+          "schiphol": {
+            "mse": 23.823030471801758,
+            "mae": 2.8216135501861572,
+            "n_samples": 12803
+          }
+        },
+        "total_params": 608424,
+        "head_params": 4128,
+        "epochs_trained": 50,
+        "early_stopped": false
+      },
+      "run_3": {
+        "seed": 456,
+        "mse": 23.85572052001953,
+        "mae": 2.822615623474121,
+        "per_station": {
+          "maastricht": {
+            "mse": 23.984819412231445,
+            "mae": 2.8273699283599854,
+            "n_samples": 12804
+          },
+          "schiphol": {
+            "mse": 23.72661018371582,
+            "mae": 2.817861318588257,
+            "n_samples": 12803
+          }
+        },
+        "total_params": 608424,
+        "head_params": 4128,
+        "epochs_trained": 50,
+        "early_stopped": false
+      },
+      "run_4": {
+        "seed": 789,
+        "mse": 23.925403594970703,
+        "mae": 2.82714581489563,
+        "per_station": {
+          "maastricht": {
+            "mse": 24.019752502441406,
+            "mae": 2.8310492038726807,
+            "n_samples": 12804
+          },
+          "schiphol": {
+            "mse": 23.8310489654541,
+            "mae": 2.823242425918579,
+            "n_samples": 12803
+          }
+        },
+        "total_params": 608424,
+        "head_params": 4128,
+        "epochs_trained": 50,
+        "early_stopped": false
+      },
+      "run_5": {
+        "seed": 101112,
+        "mse": 23.86213493347168,
+        "mae": 2.8232879638671875,
+        "per_station": {
+          "maastricht": {
+            "mse": 23.935029983520508,
+            "mae": 2.825498104095459,
+            "n_samples": 12804
+          },
+          "schiphol": {
+            "mse": 23.789230346679688,
+            "mae": 2.821078300476074,
+            "n_samples": 12803
+          }
+        },
+        "total_params": 608424,
+        "head_params": 4128,
+        "epochs_trained": 50,
+        "early_stopped": false
+      }
+    },
+    "patchtst_sequence": {
+      "run_1": {
+        "seed": 42,
+        "mse": 24.31782341003418,
+        "mae": 2.8475849628448486,
+        "per_station": {
+          "maastricht": {
+            "mse": 24.444448471069336,
+            "mae": 2.8537275791168213,
+            "n_samples": 12804
+          },
+          "schiphol": {
+            "mse": 24.19118881225586,
+            "mae": 2.841442108154297,
+            "n_samples": 12803
+          }
+        },
+        "total_params": 730272,
+        "head_params": 0,
+        "epochs_trained": 50,
+        "early_stopped": false
+      },
+      "run_2": {
+        "seed": 123,
+        "mse": 24.326583862304688,
+        "mae": 2.8487472534179688,
+        "per_station": {
+          "maastricht": {
+            "mse": 24.48113250732422,
+            "mae": 2.8543500900268555,
+            "n_samples": 12804
+          },
+          "schiphol": {
+            "mse": 24.172025680541992,
+            "mae": 2.8431437015533447,
+            "n_samples": 12803
+          }
+        },
+        "total_params": 730272,
+        "head_params": 0,
+        "epochs_trained": 50,
+        "early_stopped": false
+      },
+      "run_3": {
+        "seed": 456,
+        "mse": 24.332475662231445,
+        "mae": 2.852189540863037,
+        "per_station": {
+          "maastricht": {
+            "mse": 24.46686553955078,
+            "mae": 2.8576719760894775,
+            "n_samples": 12804
+          },
+          "schiphol": {
+            "mse": 24.198076248168945,
+            "mae": 2.8467061519622803,
+            "n_samples": 12803
+          }
+        },
+        "total_params": 730272,
+        "head_params": 0,
+        "epochs_trained": 49,
+        "early_stopped": true
+      },
+      "run_4": {
+        "seed": 789,
+        "mse": 24.37099838256836,
+        "mae": 2.851496934890747,
+        "per_station": {
+          "maastricht": {
+            "mse": 24.50484848022461,
+            "mae": 2.858142137527466,
+            "n_samples": 12804
+          },
+          "schiphol": {
+            "mse": 24.23713493347168,
+            "mae": 2.844851493835449,
+            "n_samples": 12803
+          }
+        },
+        "total_params": 730272,
+        "head_params": 0,
+        "epochs_trained": 50,
+        "early_stopped": false
+      },
+      "run_5": {
+        "seed": 101112,
+        "mse": 24.257354736328125,
+        "mae": 2.846721887588501,
+        "per_station": {
+          "maastricht": {
+            "mse": 24.366622924804688,
+            "mae": 2.8510358333587646,
+            "n_samples": 12804
+          },
+          "schiphol": {
+            "mse": 24.148080825805664,
+            "mae": 2.8424081802368164,
+            "n_samples": 12803
+          }
+        },
+        "total_params": 730272,
+        "head_params": 0,
+        "epochs_trained": 50,
+        "early_stopped": false
+      }
+    },
+    "allm4ts_official": {
+      "run_1": {
+        "seed": 42,
+        "mse": 23.75857162475586,
+        "mae": 2.8737359046936035,
+        "per_station": {
+          "maastricht": {
+            "mse": 23.82002067565918,
+            "mae": 2.877204179763794,
+            "n_samples": 12804
+          },
+          "schiphol": {
+            "mse": 23.697118759155273,
+            "mae": 2.870267152786255,
+            "n_samples": 12803
+          }
+        },
+        "total_params": 123922304,
+        "head_params": 98432,
+        "epochs_trained": 50,
+        "early_stopped": false
+      },
+      "run_2": {
+        "seed": 123,
+        "mse": 23.76401710510254,
+        "mae": 2.872375726699829,
+        "per_station": {
+          "maastricht": {
+            "mse": 23.8393497467041,
+            "mae": 2.8793210983276367,
+            "n_samples": 12804
+          },
+          "schiphol": {
+            "mse": 23.68868064880371,
+            "mae": 2.8654298782348633,
+            "n_samples": 12803
+          }
+        },
+        "total_params": 123922304,
+        "head_params": 98432,
+        "epochs_trained": 50,
+        "early_stopped": false
+      },
+      "run_3": {
+        "seed": 456,
+        "mse": 24.08704948425293,
+        "mae": 2.886988401412964,
+        "per_station": {
+          "maastricht": {
+            "mse": 24.14862632751465,
+            "mae": 2.8928732872009277,
+            "n_samples": 12804
+          },
+          "schiphol": {
+            "mse": 24.025466918945312,
+            "mae": 2.881103038787842,
+            "n_samples": 12803
+          }
+        },
+        "total_params": 123922304,
+        "head_params": 98432,
+        "epochs_trained": 50,
+        "early_stopped": false
+      },
+      "run_4": {
+        "seed": 789,
+        "mse": 23.81362533569336,
+        "mae": 2.880056381225586,
+        "per_station": {
+          "maastricht": {
+            "mse": 23.764286041259766,
+            "mae": 2.8784656524658203,
+            "n_samples": 12804
+          },
+          "schiphol": {
+            "mse": 23.86297035217285,
+            "mae": 2.8816471099853516,
+            "n_samples": 12803
+          }
+        },
+        "total_params": 123922304,
+        "head_params": 98432,
+        "epochs_trained": 50,
+        "early_stopped": false
+      },
+      "run_5": {
+        "seed": 101112,
+        "mse": 24.032907485961914,
+        "mae": 2.889439821243286,
+        "per_station": {
+          "maastricht": {
+            "mse": 24.06856918334961,
+            "mae": 2.8936944007873535,
+            "n_samples": 12804
+          },
+          "schiphol": {
+            "mse": 23.99724006652832,
+            "mae": 2.8851850032806396,
+            "n_samples": 12803
+          }
+        },
+        "total_params": 123922304,
+        "head_params": 98432,
+        "epochs_trained": 50,
+        "early_stopped": false
+      }
+    }
+  },
+  "averaged_results": {
+    "sequence": {
+      "mse_mean": 25.603897094726562,
+      "mse_std": 0.180903822183609,
+      "mae_mean": 2.980487108230591,
+      "mae_std": 0.015882395207881927,
+      "per_station": {
+        "maastricht": {
+          "mse_mean": 25.651869583129884,
+          "mse_std": 0.19831286454396768,
+          "mae_mean": 2.983655643463135,
+          "mae_std": 0.01691092619345872
+        },
+        "schiphol": {
+          "mse_mean": 25.55592155456543,
+          "mse_std": 0.16826690637827754,
+          "mae_mean": 2.977317953109741,
+          "mae_std": 0.014995937995772448
+        }
+      }
+    },
+    "patchtst_patchwise": {
+      "mse_mean": 23.890024185180664,
+      "mse_std": 0.026795396581292152,
+      "mae_mean": 2.8241770267486572,
+      "mae_std": 0.001562431687489152,
+      "per_station": {
+        "maastricht": {
+          "mse_mean": 23.98689193725586,
+          "mse_std": 0.031112522949944602,
+          "mae_mean": 2.8274600982666014,
+          "mae_std": 0.0018986087975769608
+        },
+        "schiphol": {
+          "mse_mean": 23.793150329589842,
+          "mse_std": 0.036821940251831886,
+          "mae_mean": 2.820893955230713,
+          "mae_std": 0.001749988592284071
+        }
+      }
+    },
+    "patchtst_sequence": {
+      "mse_mean": 24.321048736572266,
+      "mse_std": 0.036670174449682236,
+      "mae_mean": 2.8493478298187256,
+      "mae_std": 0.002147460589185357,
+      "per_station": {
+        "maastricht": {
+          "mse_mean": 24.452783584594727,
+          "mse_std": 0.04734099628270125,
+          "mae_mean": 2.8549855232238768,
+          "mae_std": 0.0026369486766199793
+        },
+        "schiphol": {
+          "mse_mean": 24.18930130004883,
+          "mse_std": 0.029550612276061233,
+          "mae_mean": 2.8437103271484374,
+          "mae_std": 0.0018675489965524488
+        }
+      }
+    },
+    "allm4ts_official": {
+      "mse_mean": 23.891233444213867,
+      "mse_std": 0.14015822112560272,
+      "mae_mean": 2.880519390106201,
+      "mae_std": 0.006840636022388935,
+      "per_station": {
+        "maastricht": {
+          "mse_mean": 23.92817039489746,
+          "mse_std": 0.15149665917702462,
+          "mae_mean": 2.8843117237091063,
+          "mae_std": 0.007361182923870938
+        },
+        "schiphol": {
+          "mse_mean": 23.854295349121095,
+          "mse_std": 0.1427871588226108,
+          "mae_mean": 2.87672643661499,
+          "mae_std": 0.007539888617880321
+        }
+      }
+    }
+  }
+}

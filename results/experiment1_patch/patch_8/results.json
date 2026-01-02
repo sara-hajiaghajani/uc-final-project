@@ -1,0 +1,104 @@
+{
+  "config": {
+    "patch_length": 8,
+    "stride": 4,
+    "seq_len": 336,
+    "pred_len": 96,
+    "num_runs": 3,
+    "seeds": [
+      42,
+      123,
+      456
+    ],
+    "learning_rate": 1e-05
+  },
+  "individual_runs": {
+    "patchtst_patchwise": {
+      "run_1": {
+        "seed": 42,
+        "mse": 46.92283630371094,
+        "mae": 4.374580383300781,
+        "per_station": {
+          "maastricht": {
+            "mse": 46.989776611328125,
+            "mae": 4.37428092956543,
+            "n_samples": 12936
+          },
+          "schiphol": {
+            "mse": 46.85588836669922,
+            "mae": 4.374879837036133,
+            "n_samples": 12935
+          }
+        },
+        "total_params": 607632,
+        "head_params": 1032,
+        "epochs_trained": 20,
+        "early_stopped": false
+      },
+      "run_2": {
+        "seed": 123,
+        "mse": 46.60966110229492,
+        "mae": 4.356161117553711,
+        "per_station": {
+          "maastricht": {
+            "mse": 46.60445022583008,
+            "mae": 4.352278232574463,
+            "n_samples": 12936
+          },
+          "schiphol": {
+            "mse": 46.6148681640625,
+            "mae": 4.360044002532959,
+            "n_samples": 12935
+          }
+        },
+        "total_params": 607632,
+        "head_params": 1032,
+        "epochs_trained": 20,
+        "early_stopped": false
+      },
+      "run_3": {
+        "seed": 456,
+        "mse": 46.63079071044922,
+        "mae": 4.355865478515625,
+        "per_station": {
+          "maastricht": {
+            "mse": 46.680458068847656,
+            "mae": 4.353910446166992,
+            "n_samples": 12936
+          },
+          "schiphol": {
+            "mse": 46.58111572265625,
+            "mae": 4.357820987701416,
+            "n_samples": 12935
+          }
+        },
+        "total_params": 607632,
+        "head_params": 1032,
+        "epochs_trained": 20,
+        "early_stopped": false
+      }
+    }
+  },
+  "averaged_results": {
+    "patchtst_patchwise": {
+      "mse_mean": 46.721099853515625,
+      "mse_std": 0.14291247725486755,
+      "mae_mean": 4.362202167510986,
+      "mae_std": 0.008753439411520958,
+      "per_station": {
+        "maastricht": {
+          "mse_mean": 46.75822830200195,
+          "mse_std": 0.16664385720032332,
+          "mae_mean": 4.360156536102295,
+          "mae_std": 0.01000965861319264
+        },
+        "schiphol": {
+          "mse_mean": 46.68395741780599,
+          "mse_std": 0.12235193831924697,
+          "mae_mean": 4.364248275756836,
+          "mae_std": 0.007572230854109792
+        }
+      }
+    }
+  }
+}
