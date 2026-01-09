@@ -150,7 +150,7 @@ def plot_baseline_comparison(averaged_results):
                          f"{mean:.2f}\n±{std:.2f}", ha="center", va="bottom", fontsize=9, fontweight="bold")
 
         plt.tight_layout()
-        plt.savefig(results_dir / f"{station}_baseline_comparison.png", bbox_inches="tight", dpi=300)
+        plt.savefig(results_dir / f"{station}_baseline_comparison.pdf", bbox_inches="tight", dpi=300)
         plt.close()
 
         print(f"Saved {station} plot")
@@ -199,7 +199,7 @@ def plot_baseline_comparison(averaged_results):
                  ha='center', va='bottom', fontsize=10, fontweight='bold')
 
     plt.tight_layout()
-    plt.savefig(results_dir / 'baseline_comparison.png', bbox_inches='tight', dpi=300)
+    plt.savefig(results_dir / 'baseline_comparison.pdf', bbox_inches='tight', dpi=300)
     plt.close()
 
     print("Saved overall plot")

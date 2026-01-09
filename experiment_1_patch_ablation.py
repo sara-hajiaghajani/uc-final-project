@@ -273,7 +273,7 @@ def plot_patch_ablation(all_patch_results, patch_lengths):
     ax1.legend(lines1 + lines2, labels1 + labels2, loc='best', fontsize=9, ncol=2)
 
     plt.tight_layout()
-    plt.savefig(summary_dir / 'patch_ablation_combined.png', bbox_inches='tight', dpi=300)
+    plt.savefig(summary_dir / 'patch_ablation_combined.pdf', bbox_inches='tight', dpi=300)
     plt.close()
 
     print("Saved combined plot")

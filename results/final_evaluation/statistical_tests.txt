@@ -1,0 +1,32 @@
+================================================================================
+STATISTICAL SIGNIFICANCE ANALYSIS
+================================================================================
+
+Significance levels:
+  * p < 0.05 (significant)
+  ** p < 0.01 (very significant)
+  *** p < 0.001 (highly significant)
+  ns = not significant (p >= 0.05)
+
+================================================================================
+
+PatchTST Patch-wise vs Baseline (No Patches)
+  Improvement: +6.69%
+  p-value: 0.000042
+  Result: Highly significant
+
+PatchTST Patch-wise vs Sequence-wise
+  Improvement: +1.77%
+  p-value: 0.000007
+  Result: Highly significant
+
+PatchTST Patch-wise vs GPT-2
+  Improvement: +0.01%
+  p-value: 0.988988
+  Result: Not significant
+
+PatchTST Sequence-wise vs Baseline
+  Improvement: +5.01%
+  p-value: 0.000231
+  Result: Highly significant
+

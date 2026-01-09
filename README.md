@@ -19,7 +19,7 @@ This repository contains the implementation and experiments for our paper "Evalu
 
 **Key Results:**
 - PatchTST Patch-wise achieves 6.7% lower MSE than baseline
-- 1.8% improvement over sequence-wise decoding with 45% fewer parameters
+- 1.8% improvement over sequence-wise decoding with 17% fewer parameters
 - Consistent performance across both stations (generalization validated)
 
 ---
@@ -41,6 +41,7 @@ pip install -r requirements.txt
 - numpy
 - matplotlib
 - seaborn
+- scipy
 - tqdm
 
 ---
@@ -122,6 +123,26 @@ python final_evaluation.py
 - Total runs: 4 models x 5 seeds = 20 training runs
 - Output: Final model comparison with robust statistics
 
+#### Generate Analysis
+```bash
+python generate_analysis.py
+```
+- Runs after final_evaluation.py
+- Generates statistical significance tests and convergence plots
+- Time: Less than 1 minute
+- Output: Statistical tests (txt) and training curves (pdf)
+
+**What it does:**
+1. Calculates p-values comparing all model pairs
+2. Plots validation MSE convergence across 5 runs with standard deviation bands
+3. Shows which improvements are statistically significant
+
+**Statistical Tests Generated:**
+- PatchTST Patch-wise vs Baseline: +6.69% improvement (p < 0.001, highly significant)
+- PatchTST Patch-wise vs Sequence-wise: +1.77% improvement (p < 0.001, highly significant)
+- PatchTST Patch-wise vs GPT-2: +0.01% improvement (p = 0.989, not significant)
+- PatchTST Sequence-wise vs Baseline: +5.01% improvement (p < 0.001, highly significant)
+
 ---
 
 ## Repository Structure
@@ -143,10 +164,11 @@ python final_evaluation.py
 │   └── model_allm4ts_gpt2.py         # GPT-2 patch-wise
 │
 ├── Experiment Files
-│   ├── experiment_1_patch_ablation.py
-│   ├── experiment_2_input_ablation.py
-│   ├── experiment_3_horizon_ablation.py
-│   └── final_evaluation.py
+│   ├── experiment_1_patch_ablation.py  # Tests patch lengths [8, 16, 32]
+│   ├── experiment_2_input_ablation.py  # Tests input lengths [168, 336, 672]
+│   ├── experiment_3_horizon_ablation.py  # Tests forecast horizons [24, 96, 336]
+│   ├── final_evaluation.py           # Compares all 4 models with optimal 
+│   └── generate_analysis.py          # Statistical tests and convergence plots
 │
 └── Data and Results (created when running)
     ├── data/
@@ -171,7 +193,7 @@ results/
     patch_32/results.json
     summary/
       summary.txt
-      patch_ablation_combined.png
+      patch_ablation_combined.pdf
       
   experiment2_input/
     input_168/results.json
@@ -179,7 +201,7 @@ results/
     input_672/results.json
     summary/
       summary.txt
-      input_ablation_combined.png
+      input_ablation_combined.pdf
     
   experiment3_horizon/
     horizon_24/results.json
@@ -187,20 +209,25 @@ results/
     horizon_336/results.json
     summary/
       summary.txt
-      horizon_ablation_combined.png
+      horizon_ablation_combined.pdf
     
   final_evaluation/
     results.json
     summary.txt
-    baseline_comparison.png
-    schiphol_baseline_comparison.png
-    maastricht_baseline_comparison.png
+    statistical_tests.txt
+    baseline_comparison.pdf
+    schiphol_baseline_comparison.pdf
+    maastricht_baseline_comparison.pdf
+    training_curves/
+      model_comparison_convergence.pdf
 ```
 
 **Understanding Results:**
 
 - results.json: Contains config, individual_runs, and averaged_results
 - summary.txt: Overall results table, per-station breakdown, best configuration
+- statistical_tests.txt: P-values and significance levels for model comparisons
+- model_comparison_convergence.pdf: Validation MSE curves across training epochs
 - Plots: Experiments 1-3 show combined stations, Final evaluation shows per-station comparisons
 
 ---
@@ -249,9 +276,17 @@ class Config:
 **Key Findings:**
 1. 6.7% improvement over baseline (25.60 to 23.89 MSE)
 2. 1.8% improvement over sequence-wise (24.32 to 23.89 MSE)
-3. 45% fewer parameters than sequence-wise (608K vs 730K)
+3. 17% fewer parameters than sequence-wise (608K vs 730K)
 4. 5x lower variance than GPT-2 (±0.03 vs ±0.14)
 5. 204x fewer parameters than GPT-2 with same performance
+
+### Statistical Significance
+
+All improvements are statistically significant (p < 0.001):
+- Patch-wise vs Baseline: p = 0.000042
+- Patch-wise vs Sequence-wise: p = 0.000007
+- Sequence-wise vs Baseline: p = 0.000231
+- Patch-wise vs GPT-2: p = 0.989 (not significant, equivalent performance)
 
 ### Ablation Study Results
 
@@ -280,27 +315,28 @@ On Apple M1/M2 with MPS or NVIDIA GPU:
 - Single training run (50 epochs): ~75-150 minutes depending on configuration
 - Experiment 1-3 (each): ~3-6 hours (9 runs)
 - Final evaluation: ~10-20 hours (20 runs)
+- Generate analysis: ~1 minute
 - Total for all experiments: ~40-80 hours
 
 **Training time per epoch:**
 
 | Configuration | Time per Epoch |
 |--------------|----------------|
-| Exp 1: Patch=8 | 9 min |
-| Exp 1: Patch=16 | 5 min |
-| Exp 1: Patch=32 | 3 min |
-| Exp 2: Input=168h | 2 min |
-| Exp 2: Input=336h | 3 min |
-| Exp 2: Input=672h | 6 min |
-| Exp 3: Horizon=24h | 4 min |
-| Exp 3: Horizon=96h | 6 min |
-| Exp 3: Horizon=336h | 5 min |
-| Final: Baseline | 30 min |
-| Final: PatchTST Sequence | 1.5 min |
-| Final: PatchTST Patch-wise | 1.5 min |
-| Final: aLLM4TS GPT-2 | 7 min |
+| Exp 1: Patch=8 | 9 min          |
+| Exp 1: Patch=16 | 5 min          |
+| Exp 1: Patch=32 | 3 min          |
+| Exp 2: Input=168h | 2 min          |
+| Exp 2: Input=336h | 3 min          |
+| Exp 2: Input=672h | 6 min          |
+| Exp 3: Horizon=24h | 4 min          |
+| Exp 3: Horizon=96h | 6 min          |
+| Exp 3: Horizon=336h | 5 min          |
+| Final: Baseline | 30 min         |
+| Final: PatchTST Sequence | 1.5 min        |
+| Final: PatchTST Patch-wise | 1.5 min        |
+| Final: aLLM4TS GPT-2 | 7 min          |
 
-Tip for testing: Use NUM_EPOCHS=10, PATIENCE=5 to verify everything works, then increase to NUM_EPOCHS=20/50 for final runs.
+For testing: Use NUM_EPOCHS=10, PATIENCE=5 to verify everything works, then increase to NUM_EPOCHS=20/50 for final runs.
 
 ---
 
@@ -321,14 +357,6 @@ Tip for testing: Use NUM_EPOCHS=10, PATIENCE=5 to verify everything works, then 
 ### Performance Issues
 
 - Training very slow: Check DEVICE setting (use "cuda" for NVIDIA GPU, "mps" for Apple Silicon)
-- Verify GPU usage in Activity Monitor (Mac) or Task Manager (Windows)
-
-To verify GPU usage, console should show:
-```
-Device: mps
-MPS available: True
-MPS built: True
-```
 
 ---
 
@@ -356,11 +384,17 @@ Metrics are calculated on denormalized data (original scale) for interpretabilit
 - 5 runs per model for statistical validity
 - Demonstrates effectiveness of patch-wise decoding
 
+### Phase 3: Analysis Generation
+- Statistical significance tests with paired t-tests
+- Training convergence visualization
+- Confirms improvements are not due to random chance
+
 ### Statistical Robustness
 - Multiple random seeds: Ensures results are not due to lucky initialization
 - Per-station evaluation: Tests generalization across locations
 - Early stopping: Prevents overfitting automatically
 - Time-based splits: Realistic evaluation (no data leakage)
+- Paired t-tests: Rigorous statistical comparison
 
 ---
 
@@ -387,3 +421,10 @@ Metrics are calculated on denormalized data (original scale) for interpretabilit
 - Early stopping: Monitors validation loss with patience
 - Learning rate scheduling: ReduceLROnPlateau (factor 0.5, patience 5)
 
+---
+
+## Acknowledgments
+
+- KNMI for providing open weather data
+- PatchTST authors for the base architecture
+- aLLM4TS authors for the patch-wise decoding concept
